@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://AmitV:Nine9nein!@viewfinder.eftix.azure.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "jwtSecret": "thesecrettoken"
+    "jwtSecret": "thesecrettoken",
+    "githubClientId": "8543ffac9673f8ebba72",
+    "githubClientSecret": "100385b71415047b30e1e046acb1fdcae86602ac"
 }

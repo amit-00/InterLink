@@ -15,6 +15,11 @@ body{
     text-decoration: none;
 }
 
+.contain{
+    width: 80%;
+    margin: auto;
+}
+
 .bg-black{
     background-color: black;
 }

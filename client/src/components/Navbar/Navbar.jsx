@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
-import Button from '../Button';
 import './navbar.css';
 
 const Navbar = () => {
@@ -29,7 +28,6 @@ const Navbar = () => {
                             );
                         }) }
                     </ul>
-                    <Button cName='sign-up' >Sign Up</Button>
                 </div>
             </nav>
         </Fragment>

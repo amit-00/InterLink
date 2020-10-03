@@ -36,7 +36,17 @@
 }
 
 .navbar-links-mobile{
-    display: none;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary);
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-links-mobile:hover{
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    transition: 250ms;
 }
 
 .menu-icon{

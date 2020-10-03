@@ -5,13 +5,13 @@ export const MenuItems = [
         cNames: 'navbar-links'
     },
     {
-        title: 'Login',
-        link: '/login',
+        title: 'Developers',
+        link: '/dev',
         cNames: 'navbar-links'
     },
     {
-        title: 'Profiles',
-        link: '/profiles',
+        title: 'Login',
+        link: '/login',
         cNames: 'navbar-links'
     },
     {

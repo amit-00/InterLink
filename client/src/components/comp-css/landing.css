@@ -40,7 +40,7 @@
 }
 
 .content{
-    z-index: 10;
+    z-index: 1;
 }
 .content h1{
     font-size: 4em;
@@ -52,7 +52,7 @@
     margin-bottom: 2rem;
 }
 
-.home-button{
+.land-button{
     font-size: 1.5em;
     padding: 0.5rem 1rem;
     outline: none;
@@ -61,7 +61,7 @@
     text-decoration: none;
 }
 
-.home-button:hover{
+.land-button:hover{
     padding: 0.5rem 1rem;
     transition: all 0.3s ease-out;
     background-color: #fff;
@@ -70,12 +70,12 @@
     text-decoration: none;
 }
 
-.home-button-primary{
+.land-button-primary{
     background-color: var(--dark);
     color: #fff;
 }
 
-.home-button-secondary{
+.land-button-secondary{
     background-color: var(--primary);
     color: #fff;
 }

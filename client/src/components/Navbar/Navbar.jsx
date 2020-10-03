@@ -18,9 +18,9 @@ const Navbar = () => {
         <Fragment>
             <nav className="bg-black">
                 <div className="container-fluid navbar-items">
-                    <h1 className="navbar-logo text-white" > <i class="fas fa-link"></i> InterLink</h1>
+                    <h1 className="navbar-logo text-white" > <i className="fas fa-link"></i> InterLink</h1>
                     <div className="menu-icon" onClick={handleClick}>
-                        <i class={clicked ? "fas fa-times text-white" : "fas fa-bars text-white"}></i>
+                        <i className={clicked ? "fas fa-times text-white" : "fas fa-bars text-white"}></i>
                     </div>
                     <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
                         { MenuItems.map((item, index) => {

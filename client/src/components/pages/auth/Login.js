@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
+import { login } from '../../../actions/auth';
 
 import '../../comp-css/login.css';
 
-const Login = () => {
+const Login = ({ login }) => {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -12,13 +15,20 @@ const Login = () => {
 
     const { email, password} = formData;
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const onSubmit = e => {
+        e.preventDefault();
+        
+        login({ email, password });
+
+    }
 
     return (
         <div className="register-page">
             <div className="card login-card rounded-0 p-4 shadow">
                 <h1 className="heading mb-5">Sign In</h1>
-                <form className="form" >
+                <form className="form" onSubmit={e => onSubmit(e)} >
                     <div className="form-group mb-4">
                         <input type="email" className="form-control rounded-0" placeholder="Email" value={email} name="email" onChange={e => onChange(e)} required/>
                     </div>
@@ -33,4 +43,9 @@ const Login = () => {
     )
 }
 
-export default Login;
+Login.propTypes = {
+    login: PropTypes.func.isRequired
+
+}
+
+export default connect(null, { login })(Login);

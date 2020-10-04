@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
+
 import Navbar from './components/Navbar/Navbar';
+import Alert from './components/layout/Alert';
 
 import Landing from './components/pages/Landing';
 import Login from './components/pages/auth/Login';
@@ -11,16 +15,20 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Fragment>
-        <Navbar />
-        <Route exact path='/' component={ Landing } />
-        <Switch>
-          <Route exact path='/login' component={ Login } />
-          <Route exact path='/register' component={ Register } />
-        </Switch>
-      </Fragment>
-    </Router>
+    <Provider store={store} >
+      <Router>
+        <Fragment>
+          <Alert />
+          <Navbar />
+          <Route exact path='/' component={ Landing } />
+          <Switch>
+            <Route exact path='/login' component={ Login } />
+            <Route exact path='/register' component={ Register } />
+          </Switch>
+        </Fragment>
+      </Router>
+    </Provider>
+    
   );
 }
 

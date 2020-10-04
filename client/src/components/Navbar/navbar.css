@@ -71,6 +71,7 @@
         left: -100%;
         opacity: 1;
         transition: all 0.5s ease;
+        z-index: 2;
     }
 
     .nav-menu.active{
@@ -78,7 +79,6 @@
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
-        z-index: 2;
         padding-left: 0;
     }
 

@@ -23,3 +23,20 @@ body{
 .bg-black{
     background-color: black;
 }
+
+.alert-floating{
+    width: 50%;
+    margin: auto;
+    position: absolute;
+    top: 12vh;
+    left: 25%;
+    z-index: 100;
+    text-align: center;
+}
+
+@media screen and (max-width: 960px){
+    .alert-floating{
+        width: 80%;
+        left: 10%;
+    }
+}

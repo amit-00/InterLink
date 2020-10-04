@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { setAlert } from '../../../actions/alert';
+
+import Alert from '../../layout/Alert';
 
 
 import '../../comp-css/register.css';
 
-const Register = () => {
+const Register = ({ setAlert }) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -15,13 +20,22 @@ const Register = () => {
 
     const { name, email, password, cpassword } = formData;
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        if(password !== cpassword){
+            setAlert('Passwords do not match', 'danger');
+        }
+
+    }
 
     return (
         <div className="register-page">
-            <div className="card register-card rounded-0 p-4">
-                <h1 className="heading">Register</h1>
-                <form className="form" >
+            <div className="card register-card rounded-0 p-4 shadow">
+                <h1 className="heading mb-5">Register</h1>
+                <form className="form" onSubmit={e => onSubmit(e)} >
                     <div className="form-group">
                         <input type="text" className="form-control rounded-0" placeholder="Full Name" value={name} name="name" onChange={e => onChange(e)} />
                     </div>
@@ -38,10 +52,13 @@ const Register = () => {
                     <input type="submit" className="btn btn-primary rounded-0 btn-block" value="Sign Up" />
                 </form>
                 <small className="form-text text-muted">Aleady have an account? <Link to="/login" >Sign in</Link> </small>
-
             </div>
         </div>
     )
 }
 
-export default Register;
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+}
+
+export default connect(null, { setAlert })(Register);

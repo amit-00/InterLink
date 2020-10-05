@@ -1,9 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MenuItems } from './MenuItems';
+import { MenuItems, AuthMenuItems } from './MenuItems';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated }) => {
     const [clicked, setClicked] = useState(false);
     const [] = useState();
 
@@ -11,6 +13,15 @@ const Navbar = () => {
         setClicked(!clicked);
 
     }
+
+    const menu = () => {
+        if(isAuthenticated){
+            return AuthMenuItems;
+        }
+        else{
+            return MenuItems;
+        }
+    };
 
 
     return (
@@ -22,7 +33,7 @@ const Navbar = () => {
                         <i className={clicked ? "fas fa-times text-white" : "fas fa-bars text-white"}></i>
                     </div>
                     <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
-                        { MenuItems.map((item, index) => {
+                        { menu().map((item, index) => {
                             return(
                                 <li key={index}><Link className={item.cNames} to={item.link} >{item.title}</Link></li>
                             );
@@ -34,4 +45,12 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+Navbar.prototypes = {
+    isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, {})(Navbar);

@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './navbar.css';
 
-const Navbar = ({ isAuthenticated }) => {
+import { logout } from '../../actions/auth'
+
+const Navbar = ({ auth:{ isAuthenticated, loading }, logout }) => {
     const [clicked, setClicked] = useState(false);
     const [] = useState();
 
@@ -15,7 +17,7 @@ const Navbar = ({ isAuthenticated }) => {
     }
 
     const menu = () => {
-        if(isAuthenticated){
+        if(isAuthenticated && !loading){
             return AuthMenuItems;
         }
         else{
@@ -35,9 +37,10 @@ const Navbar = ({ isAuthenticated }) => {
                     <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
                         { menu().map((item, index) => {
                             return(
-                                <li key={index}><Link className={item.cNames} to={item.link} >{item.title}</Link></li>
+                                <li key={index}><Link className={item.cNames} to={item.link} onClick={item.onClick} >{item.title}</Link></li>
                             );
                         }) }
+                        { (isAuthenticated && !loading) && <li><Link className='navbar-links-mobile' to='/' onClick={logout} >Log Out</Link></li> }
                     </ul>
                 </div>
             </nav>
@@ -46,11 +49,12 @@ const Navbar = ({ isAuthenticated }) => {
 }
 
 Navbar.prototypes = {
-    isAuthenticated: PropTypes.bool,
+    auth: PropTypes.object,
+    logout: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    auth: state.auth
 })
 
-export default connect(mapStateToProps, {})(Navbar);
+export default connect(mapStateToProps, { logout })(Navbar);

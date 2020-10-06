@@ -7,10 +7,12 @@ import setAuthToken from './utils/setAuthToken';
 
 import Navbar from './components/Navbar/Navbar';
 import Alert from './components/layout/Alert';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 import Landing from './components/pages/Landing';
 import Login from './components/pages/auth/Login';
 import Register from './components/pages/auth/Register';
+import Dashboard from './components/pages/Dashboard';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -35,6 +37,7 @@ const App = () => {
           <Switch>
             <Route exact path='/login' component={ Login } />
             <Route exact path='/register' component={ Register } />
+            <PrivateRoute exact path='/dashboard' component={ Dashboard } />
           </Switch>
         </Fragment>
       </Router>

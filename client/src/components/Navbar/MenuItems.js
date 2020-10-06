@@ -2,7 +2,7 @@ export const MenuItems = [
     {
         title: 'Home',
         link: '/',
-        cNames: 'navbar-links'
+        cNames: 'navbar-links',
     },
     {
         title: 'Developers',
@@ -36,10 +36,5 @@ export const AuthMenuItems = [
         title: 'Dashboard',
         link: '/dashboard',
         cNames: 'navbar-links'
-    },
-    {
-        title: 'Logout',
-        link: '/register',
-        cNames: 'navbar-links-mobile'
     }
 ];

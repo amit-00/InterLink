@@ -11,7 +11,7 @@ const User = require('../../models/User');
 //@route   GET api/profile/me
 //@desc    get current user profile
 //@access  Private
-router.get('/me', async (req, res) => {
+router.get('/me', auth, async (req, res) => {
     try{
         const profile = await Profile.findOne({ user: req.user.id }).populate('user', [ 'name', 'avatar' ]);
 
@@ -159,7 +159,7 @@ router.put('/experience', [ auth,
     
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ errors: errors.array() });
     }
 
     const { title, company, location, from, to, current, description } = req.body;
@@ -228,7 +228,7 @@ router.put('/education', [ auth,
     
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ errors: errors.array() });
     }
 
     const { school, degree, fieldofstudy, from, to, current, description } = req.body;

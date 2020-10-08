@@ -31,7 +31,7 @@ export default function ( state = initiaLState, action ) {
                 ...state,
                 profile: null,
                 repos: [],
-                loading: true
+                loading: false
             }
         
         default:

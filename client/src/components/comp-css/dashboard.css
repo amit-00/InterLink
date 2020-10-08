@@ -1,0 +1,13 @@
+.no-profile{
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-profile-card{
+    width: 400px;
+    text-align: center;
+    padding: 1rem;
+}

@@ -37,7 +37,7 @@ const Navbar = ({ auth:{ isAuthenticated, loading }, logout }) => {
                     <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
                         { menu().map((item, index) => {
                             return(
-                                <li key={index}><Link className={item.cNames} to={item.link} onClick={item.onClick} >{item.title}</Link></li>
+                                <li key={index}><Link className={item.cNames} to={item.link} onClick={handleClick} >{item.title}</Link></li>
                             );
                         }) }
                         { (isAuthenticated && !loading) && <li><Link className='navbar-links-mobile' to='/' onClick={logout} >Log Out</Link></li> }

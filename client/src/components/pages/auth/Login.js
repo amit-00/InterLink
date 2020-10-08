@@ -29,7 +29,7 @@ const Login = ({ login, isAuthenticated }) => {
     }
 
     return (
-        <div className="register-page">
+        <div className="login-page">
             <div className="card login-card rounded-0 p-4 shadow">
                 <h1 className="heading mb-5">Sign In</h1>
                 <form className="form" onSubmit={e => onSubmit(e)} >

@@ -13,6 +13,7 @@ import Landing from './components/pages/Landing';
 import Login from './components/pages/auth/Login';
 import Register from './components/pages/auth/Register';
 import Dashboard from './components/pages/Dashboard';
+import CreateProfile from './components/pages/CreateProfile';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -38,6 +39,7 @@ const App = () => {
             <Route exact path='/login' component={ Login } />
             <Route exact path='/register' component={ Register } />
             <PrivateRoute exact path='/dashboard' component={ Dashboard } />
+            <PrivateRoute exact path='/create-profile' component={ CreateProfile } />
           </Switch>
         </Fragment>
       </Router>

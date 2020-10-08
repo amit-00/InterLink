@@ -1,0 +1,12 @@
+.create-card{
+    margin-top: 4rem;
+    margin-bottom: 8rem;
+}
+
+.social-group{
+    display: flex;
+}
+
+.social-logo{
+    width: 50px;
+}

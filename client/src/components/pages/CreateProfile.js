@@ -93,7 +93,7 @@ const CreateProfile = ({ updateUserProfile, history })=> {
                             <input type="text" className="form-control rounded-0" placeholder="Github Username" name="githubusername" value={githubusername} onChange={e => onChange(e)} />
                             <small className="form-text text-muted">Github username to show repos</small>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <textarea className="form-control rounded-0" rows="3" placeholder="Bio" name="bio" value={bio} onChange={e => onChange(e)} ></textarea>
                             <small className="form-text text-muted">Bio about yourself</small>
                         </div>

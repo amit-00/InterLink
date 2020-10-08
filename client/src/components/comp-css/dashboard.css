@@ -11,3 +11,27 @@
     text-align: center;
     padding: 1rem;
 }
+
+.profile-avatar{
+    width: 100%;
+}
+
+.exp-title{
+    font-size: 1.2em;
+    margin-bottom: 0;
+    line-height: 1rem;
+}
+
+.exp-company{
+    font-weight: 300;
+}
+
+.exp-sub{
+    font-size: 0.8em;
+    line-height: 0;
+}
+
+.profile-skills{
+    list-style: none;
+    padding: 0;
+}

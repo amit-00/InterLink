@@ -38,7 +38,7 @@ router.post('/', [ auth, [ check('status', 'Status is required').not().isEmpty()
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { company, website, location, status, skills, bio, githubusername, youtube, twitter, facebook, instagram } = req.body;
+    const { company, website, location, status, skills, bio, githubusername, youtube, twitter, linkedin, facebook, instagram } = req.body;
 
     const profileFields = {};
 
@@ -59,6 +59,7 @@ router.post('/', [ auth, [ check('status', 'Status is required').not().isEmpty()
 
     if(youtube) profileFields.social.youtube = youtube;
     if(twitter) profileFields.social.twitter = twitter;
+    if(linkedin) profileFields.social.linkedin = linkedin;
     if(facebook) profileFields.social.facebook = facebook;
     if(instagram) profileFields.social.instagram = instagram;
 

@@ -28,34 +28,38 @@ const Dashboard = ({ getUserProfile, auth: { user } , profile: { loading, profil
                             <br/>
                             <small className="text-muted">Experiences</small> 
                             <hr className="mt-0" />
-                            <div className="profile-experience">
-                                <p className='exp-title'> Developer <span className="badge badge-primary align-middle float-right">Current</span> </p>
-                                <p className="mb-2 exp-company" >Tesla</p>
-                                <p className="text-muted exp-sub"> San Fransisco, CAL </p>
-                                <p className="text-muted exp-sub"> From: 8-10-2018, To: present </p>
-                            </div>
+                            {profile.experience.map((exp, index) => (
+                                <div key={index} className="profile-experience">
+                                    <p className='exp-title'> { exp.title } { exp.current && <span className="badge badge-primary align-middle float-right">Current</span>} </p>
+                                    <p className="mb-2 exp-company" > { exp.company } </p>
+                                    <p className="text-muted exp-sub"> {exp.location} </p>
+                                    <p className="text-muted exp-sub"> From: { exp.from }, To: { exp.current ? 'current' : exp.to } </p>
+                                </div>
+                                
+                            ))}
                             <br/>
                             <small className="text-muted">Skills</small> 
                             <hr className="mt-0" />
                             <ul className="profile-skills">
-                                <li><span className="badge bg-black text-white" >JAVASCRIPT</span></li>
-                                <li><span className="badge bg-black text-white" >HTML</span></li>
-                                <li><span className="badge bg-black text-white" >CSS</span></li>
-                                <li><span className="badge bg-black text-white" >PYTHON</span></li>
-                                
+                                { profile.skills.map((skill, index) => <li key={index} ><span className="badge bg-black text-white" >{ skill }</span></li>) }
                             </ul>
-                            {/* {profile.experience.map(exp => (
-                                <div className="experience">
-                                    <h5>{ exp.title }</h5>
-                                    <p className="mb-1" >{ exp.company }</p>
-                                    <small className="text-muted"> {exp.location} </small>
-                                    <small className="text-muted"> from:{exp.from}, to:{ exp.current ? 'present' : exp.to } </small>
-                                </div>
-                                
-                            ))} */}
                         </div>
-                        <div className="col-md-9">
-
+                        <div className="col-md-8 offset-md-1">
+                            <h1 className="title-slim d-inline mr-3" >{ user && profile.user.name }</h1>
+                            <small className="text-muted"><i className="fas fa-map-marker-alt mr-1"></i>{ profile.location }</small>
+                            <p className="text-primary mb-4">{ profile.status }</p>
+                            <h5 className="title-slim">Social</h5>
+                            { profile.social && (
+                                <div className="social-links d-flex mb-4 justify-content-around">
+                                    { profile.social.youtube && <a href={profile.social.youtube}><i className="fab fa-twitter fa-2x" style={{ color: "#00acee"}}></i></a> }
+                                    { profile.social.twitter && <a href={profile.social.twitter}><i className="fab fa-facebook-square fa-2x" style={{ color: "#3b5998" }}></i></a> }
+                                    { profile.social.linkedin && <a href={profile.social.linkedin}><i className="fab fa-linkedin fa-2x" style={{ color: "#0e76a8" }}></i></a> }
+                                    { profile.social.facebook && <a href={profile.social.facebook}><i className="fab fa-youtube fa-2x" style={{ color: "#FF0000" }}></i></a> }
+                                    { profile.social.instagram && <a href={profile.social.instagram}><i className="fab fa-instagram fa-2x text-warning"></i></a> }
+                                </div>
+                            )}
+                            <h5 className="title-slim">Bio</h5>
+                            <p className="bio-box" >{ profile.bio }</p>
                         </div>
                     </div>
                 </div>

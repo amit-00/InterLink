@@ -1,2 +1,2 @@
-# ViewFinder
-A social media web app that allows you to share or find pictures
+# Interlink
+A social media web app that allows developers to network with one another.

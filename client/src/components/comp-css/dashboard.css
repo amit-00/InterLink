@@ -28,7 +28,6 @@
 
 .exp-sub{
     font-size: 0.8em;
-    line-height: 0;
 }
 
 .profile-skills{
@@ -44,4 +43,27 @@
 
 .social-links{
     width: 275px;
+}
+
+.dash-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.scroll-btns{
+    border-bottom: 1px solid lightgray;
+}
+
+.scroll-btn{
+    padding: 0.5rem 1rem;
+    background-color: var(--light);
+}
+
+.scroll-btn:hover{
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+.scroll-btn-active{
+    border-bottom: 2px solid var(--primary);
 }

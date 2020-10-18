@@ -1,17 +1,17 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Moment from 'react-moment';
-import { getUserProfile } from '../../actions/profile';
+import { getUserProfile, deleteUser } from '../../actions/profile';
 
 import Spinner from '../layout/Spinner';
+import Experience from '../dashboard/Experience';
 import DashScroller from '../dashboard/DashScroller';
 
 import PropTypes from 'prop-types';
 
 import '../comp-css/dashboard.css';
 
-const Dashboard = ({ getUserProfile, auth: { user } , profile: { loading, profile } }) => {
+const Dashboard = ({ getUserProfile, deleteUser, auth: { user } , profile: { loading, profile } }) => {
     useEffect(() => {
         getUserProfile();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -27,24 +27,14 @@ const Dashboard = ({ getUserProfile, auth: { user } , profile: { loading, profil
                     <div className="row my-5">
                         <div className="col-lg-3">
                             <img className="mb-4 profile-avatar" src={ user && profile.user.avatar } alt=""/>
-                            <Link to='/edit-profile' className="btn btn-primary btn-sm rounded-0 mb-3 non-mobile" >Edit Profile</Link>
+                            <div className="d-flex mb-3 justify-content-center">
+                                <Link to='/edit-profile' className="btn btn-primary btn-sm rounded-0 non-mobile mr-3" >Edit Profile</Link>
+                                <button onClick={() => deleteUser()} className="btn btn-danger btn-sm rounded-0 non-mobile">Delete Account</button>
+                            </div>
                             <br/>
                             <small className="text-muted">Experience</small> 
                             <hr className="mt-0" />
-                            {profile.experience.map(exp => (
-                                <div key={exp._id} className="profile-experience mb-2 bg-light p-2">
-                                    <p className='exp-title'> { exp.title } { exp.current && <span className="badge badge-primary align-middle float-right">Current</span>} </p>
-                                    <p className="mb-2 exp-company" > { exp.company } </p>
-                                    <p className="text-muted exp-sub"> {exp.location} </p>
-                                    <Moment className="text-muted exp-sub" format='YYYY/MM/DD' >{ exp.from }</Moment> - {' '}
-                                    { exp.to === null ? (
-                                        <p className="text-muted exp-sub d-inline"> Now </p>
-                                    ) : (
-                                        <Moment className="text-muted exp-sub" format='YYYY/MM/DD' >{ exp.to }</Moment>
-                                    ) }
-                                </div>
-                            ))}
-                            <Link to='/add-experience' className="btn btn-light btn-sm rounded-0" ><i className="far fa-plus-square"></i> Add Experience</Link>
+                            <Experience experience={ profile.experience } />
                             <br/>
                             <small className="text-muted">Skills</small> 
                             <hr className="mt-0" />
@@ -68,7 +58,7 @@ const Dashboard = ({ getUserProfile, auth: { user } , profile: { loading, profil
                             )}
                             <h5 className="title-slim">Bio</h5>
                             <p className="bio-box" >{ profile.bio }</p>
-                            <DashScroller profile={profile} />
+                            <DashScroller profile={ profile } />
                         </div>
                     </div>
                 </div>
@@ -97,4 +87,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, { getUserProfile })(Dashboard);
+export default connect(mapStateToProps, { getUserProfile, deleteUser })(Dashboard);

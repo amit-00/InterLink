@@ -67,3 +67,13 @@
 .scroll-btn-active{
     border-bottom: 2px solid var(--primary);
 }
+
+.delete-edu{
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.delete-edu:hover{
+    color: var(--danger);
+    transition: all 0.25s ease;
+}

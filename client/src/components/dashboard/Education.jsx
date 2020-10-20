@@ -5,12 +5,12 @@ import { delEducation } from '../../actions/profile';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 
-const Education = ({ education, delEducation }) => {
+const Education = ({ education, delEducation, auth }) => {
     return(
         <Fragment>
             {education.map(edu => (
                 <div key={edu._id} className="profile-experience bg-light p-3 mb-2">
-                    <span onClick={() => delEducation(edu._id)} className="delete-edu float-right"><i className="far fa-window-close"></i></span>
+                    { auth && <span onClick={() => delEducation(edu._id)} className="delete-edu float-right"><i className="far fa-window-close"></i></span> }
                     <p className='exp-title'> { edu.degree } { edu.current && <span className="badge badge-primary align-middle ml-5">Current</span>} </p>
                     <p className="mb-2 exp-company" > { edu.school } </p>
                     <p className="text-muted exp-sub mb-3"> { edu.fieldofstudy } </p>
@@ -26,7 +26,7 @@ const Education = ({ education, delEducation }) => {
                     <p className="text-muted exp-sub mt-3 mb-0">Description: { edu.description } </p>
                 </div>
             ))}
-            <Link to='/add-education' className="btn btn-light btn-sm rounded-0" ><i className="far fa-plus-square"></i> Add Education</Link>
+            { auth && <Link to='/add-education' className="btn btn-light btn-sm rounded-0" ><i className="far fa-plus-square"></i> Add Education</Link> }
         </Fragment>
     )
 }

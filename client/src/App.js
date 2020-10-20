@@ -13,6 +13,9 @@ import Landing from './components/pages/Landing';
 import Login from './components/pages/auth/Login';
 import Register from './components/pages/auth/Register';
 import Dashboard from './components/pages/Dashboard';
+import Developers from './components/pages/Developers';
+import Developer from './components/pages/Developer';
+import Feed from './components/pages/Feed';
 import CreateProfile from './components/pages/CreateProfile';
 import EditProfile from './components/pages/EditProfile';
 import AddExperience from './components/pages/AddExperience';
@@ -41,7 +44,10 @@ const App = () => {
           <Switch>
             <Route exact path='/login' component={ Login } />
             <Route exact path='/register' component={ Register } />
+            <Route exact path='/developers' component={ Developers } />
+            <Route exact path='/developer/:id' component={ Developer } />
             <PrivateRoute exact path='/dashboard' component={ Dashboard } />
+            <PrivateRoute exact path='/feed' component={ Feed } />
             <PrivateRoute exact path='/create-profile' component={ CreateProfile } />
             <PrivateRoute exact path='/edit-profile' component={ EditProfile } />
             <PrivateRoute exact path='/add-experience' component={ AddExperience } />

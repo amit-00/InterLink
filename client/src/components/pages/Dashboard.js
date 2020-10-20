@@ -14,8 +14,7 @@ import '../comp-css/dashboard.css';
 const Dashboard = ({ getUserProfile, deleteUser, auth: { user } , profile: { loading, profile } }) => {
     useEffect(() => {
         getUserProfile();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [getUserProfile]);
 
     return loading && profile === null ? <Spinner /> : (
 
@@ -34,7 +33,7 @@ const Dashboard = ({ getUserProfile, deleteUser, auth: { user } , profile: { loa
                             <br/>
                             <small className="text-muted">Experience</small> 
                             <hr className="mt-0" />
-                            <Experience experience={ profile.experience } />
+                            <Experience experience={ profile.experience } auth={ true } />
                             <br/>
                             <small className="text-muted">Skills</small> 
                             <hr className="mt-0" />
@@ -58,7 +57,7 @@ const Dashboard = ({ getUserProfile, deleteUser, auth: { user } , profile: { loa
                             )}
                             <h5 className="title-slim">Bio</h5>
                             <p className="bio-box" >{ profile.bio }</p>
-                            <DashScroller profile={ profile } />
+                            <DashScroller profile={ profile } auth={ true }  />
                         </div>
                     </div>
                 </div>

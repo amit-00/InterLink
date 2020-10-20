@@ -6,7 +6,7 @@ export const MenuItems = [
     },
     {
         title: 'Developers',
-        link: '/dev',
+        link: '/developers',
         cNames: 'navbar-links'
     },
     {
@@ -29,7 +29,7 @@ export const AuthMenuItems = [
     },
     {
         title: 'Developers',
-        link: '/dev',
+        link: '/developers',
         cNames: 'navbar-links'
     },
     {

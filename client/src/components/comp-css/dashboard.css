@@ -77,3 +77,11 @@
     color: var(--danger);
     transition: all 0.25s ease;
 }
+
+.repo-item{
+    text-decoration: none;
+}
+
+.repo-item:hover{
+    text-decoration: none;
+}

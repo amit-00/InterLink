@@ -43,7 +43,7 @@ const EditProfile = ({ profile: { profile, loading }, updateUserProfile, getUser
             instagram: loading || !profile.social.instagram ? '' : profile.social.instagram,
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    } ,[loading]);
+    } ,[loading, getUserProfile]);
 
     const {
         company,

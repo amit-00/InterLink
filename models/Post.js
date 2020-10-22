@@ -16,9 +16,6 @@ const PostSchema = new Schema({
     comment: {
         type: String
     },
-    name: {
-        type: String
-    },
     avatar: {
         type: String
     },

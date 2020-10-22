@@ -1,6 +1,8 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/post';
+import CreatePost from '../post/CreatePost';
 import Spinner from '../layout/Spinner';
 import PostItem from '../post/PostItem';
 import PropTypes from 'prop-types';
@@ -10,8 +12,13 @@ const Feed = ({ getPosts, post: { posts, loading } }) => {
         getPosts();
     }, [getPosts]);
 
+    const [showCreate, setShowCreate] = useState(false);
+
     return loading ? <Spinner /> : (
         <div className="container" >
+            <h1 className="title-slim my-4">Posts</h1>
+            <button className="btn bg-black text-white rounded-0 mb-3" onClick={() => setShowCreate(!showCreate)} >Create New Post</button>
+            { showCreate && <CreatePost /> }
             { posts === null || loading ? <Spinner /> : (
                 <Fragment>
                     { posts.map(post =>  <PostItem key={ post._id } post={ post } /> ) }
@@ -22,7 +29,8 @@ const Feed = ({ getPosts, post: { posts, loading } }) => {
 }
 
 Feed.propTypes = {
-    getPosts: PropTypes.func.isRequired
+    getPosts: PropTypes.func.isRequired,
+    post: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

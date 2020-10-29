@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addPost } from '../../actions/post';
 import PropTypes from 'prop-types';
 
-import '../comp-css/create-post.css';
-
-const CreatePost = ({ addPost }) => {
+const CreateComment = ({  }) => {
     const [text, setText] = useState('');
 
     const onSubmit = e => {
-        console.log(text)
-        addPost({ text });
-    };
+        e.preventDefault();
+    }
 
     return (
-        <div className="card post-card rounded-0 p-4 shadow my-4">
-            <h1 className="heading">Make a Post</h1>
+        <div className="card shadow">
+            <h5 className="title-slim">Add Comment:</h5>
             <form className="form" onSubmit={e => onSubmit(e)} >
                 <div className="form-group mb-3">
                     <textarea 
@@ -34,8 +29,8 @@ const CreatePost = ({ addPost }) => {
     )
 }
 
-CreatePost.propTypes = {
-    addPost: PropTypes.func.isRequired
+CreateComment.propTypes = {
+
 }
 
-export default connect(null, { addPost })(CreatePost);
+export default connect(null, {  })(CreateComment);

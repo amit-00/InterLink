@@ -33,7 +33,7 @@ router.post('/', [ auth, [ check('text', 'Text is required to post').not().isEmp
 
     }
     catch(err){
-        console.error(err.nessage);
+        console.error(err.message);
         res.status(500).send('Server Error');
     }
 
@@ -50,7 +50,7 @@ router.get('/', auth, async (req, res) => {
 
     }
     catch(err){
-        console.error(err.nessage);
+        console.error(err.message);
         res.status(500).send('Server Error');
     }
 
@@ -71,7 +71,7 @@ router.get('/:id', auth, async (req, res) => {
 
     }
     catch(err){
-        console.error(err.nessage);
+        console.error(err.message);
         if(err.kind === 'ObjectId'){
             return res.status(404).json({ msg: 'Post does not exist' });
         }
@@ -101,7 +101,7 @@ router.delete('/:id', auth, async (req, res) => {
 
     }
     catch(err){
-        console.error(err.nessage);
+        console.error(err.message);
         if(err.kind === 'ObjectId'){
             return res.status(404).json({ msg: 'Post does not exist' });
         }
@@ -129,7 +129,8 @@ router.put('/like/:id', auth, async (req, res) => {
         res.json(post.likes);
     }
     catch(err){
-
+        console.error(err.message);
+        res.status(500).send('Server Error');
     }
 });
 
@@ -154,15 +155,17 @@ router.put('/unlike/:id', auth, async (req, res) => {
         res.json(post.likes);
     }
     catch(err){
-
+        console.error(err.message);
+        res.status(500).send('Server Error');
     }
 });
 
-//@route   PUT api/posts/comment/:id
+//@route   POST api/posts/comment/:id
 //@desc    Adds comment to array of comments
 //@access  Private
 
-router.put('/comment/:id', [ auth, [ check('text', 'Text is required in a comment').not().isEmpty() ] ], async (req, res) => {
+router.post('/comment/:id', [ auth, [ check('text', 'Text is required in a comment').not().isEmpty() ] ], async (req, res) => {
+    const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({ errors: errors.array() });
     }
@@ -187,7 +190,7 @@ router.put('/comment/:id', [ auth, [ check('text', 'Text is required in a commen
 
     }
     catch(err){
-        console.error(err.nessage);
+        console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
@@ -219,7 +222,8 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
         res.json(post.comments);
     }
     catch(err){
-
+        console.error(err.message);
+        res.status(500).send('Server Error');
     }
 });
 

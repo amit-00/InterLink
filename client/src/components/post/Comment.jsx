@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 
-const Comment = ({ comment: { user, text, name, avatar, date } }) => {
+const Comment = ({ comment: { user, text, name, avatar, date }, auth }) => {
     return (
         <div className="rounded-0 p-3 card my-3" >
             <div className="d-flex">
@@ -18,13 +18,20 @@ const Comment = ({ comment: { user, text, name, avatar, date } }) => {
             </div>
             <hr/>
             <p  className="title-slim">{ text }</p>
-            { !auth.loading && auth.user._id === user && <button className="btn btn-danger rounded-0 ml-3 float-right">Delete Post</button> }
+            <div>
+                { !auth.loading && auth.user._id === user && <button className="btn btn-danger rounded-0 ml-3 float-right">Delete Comment</button> }
+            </div>
         </div>
     )
 }
 
 Comment.propTypes = {
-
+    comment: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
 }
 
-export default connecnt(null, {  })(Comment);
+const mapStateToProps = state => ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps, {  })(Comment);
